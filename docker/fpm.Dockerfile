@@ -15,6 +15,7 @@ RUN apk add --update \
         libxslt-dev \
         libssh2 \
         libssh2-dev \
+        git \
     && docker-php-source extract \
     && docker-php-ext-install opcache \
     && docker-php-ext-install intl \
@@ -83,3 +84,5 @@ ADD ./files/fpm/php.ini /usr/local/etc/php/
 ADD ./files/fpm/http.ini /usr/local/etc/php/conf.d/
 RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
 WORKDIR /var/www/s4
+RUN chown www-data.www-data /var/www/s4
+USER www-data
