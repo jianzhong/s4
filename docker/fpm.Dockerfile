@@ -29,6 +29,7 @@ RUN apk add --update \
     && docker-php-ext-install soap \
     && docker-php-ext-install zip \
     && docker-php-ext-install xsl \
+    && docker-php-ext-install pdo_mysql \
     && docker-php-ext-enable \
         ssh2 \
         xdebug \
