@@ -1,0 +1,37 @@
+parameters:
+    redis_sentinel_1: redis://redis-sentinel-1:26379
+    redis_sentinel_2: redis://redis-sentinel-2:26379
+    redis_sentinel_3: redis://redis-sentinel-3:26379
+    
+    redis_group_name: mymaster
+    
+    redis_sentinel_options_session:
+        replication: 'sentinel'
+        service: "%redis_group_name%"
+        parameters:
+            database: 1
+    redis_sentinel_options_doctrine_query:
+        replication: 'sentinel'
+        service: "%redis_group_name%"
+        parameters:
+            database: 2
+    redis_sentinel_options_doctrine_result:
+        replication: 'sentinel'
+        service: "%redis_group_name%"
+        parameters:
+            database: 3
+    redis_sentinel_options_doctrine_metadata:
+        replication: 'sentinel'
+        service: "%redis_group_name%"
+        parameters:
+            database: 4
+    redis_sentinel_options_for_redis_queue:
+        replication: 'sentinel'
+        service: "%redis_group_name%"
+        parameters:
+            database: 5
+    redis_sentinel_options_for_var_cache:
+        replication: 'sentinel'
+        service: "%redis_group_name%"
+        parameters:
+            database: 15

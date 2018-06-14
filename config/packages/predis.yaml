@@ -1,0 +1,26 @@
+parameters:
+    redis_sentinels:
+        - "%redis_sentinel_1%"
+        - "%redis_sentinel_2%"
+        - "%redis_sentinel_3%"
+
+services:
+    predis_client_session:
+        class: Predis\Client
+        arguments: ["%redis_sentinels%", "%redis_sentinel_options_session%"]
+    predis_client_doctrine_query:
+        class: Predis\Client
+        arguments: ["%redis_sentinels%", "%redis_sentinel_options_doctrine_query%"]
+    predis_client_doctrine_result:
+        class: Predis\Client
+        arguments: ["%redis_sentinels%", "%redis_sentinel_options_doctrine_result%"]
+    predis_client_doctrine_metadata:
+        class: Predis\Client
+        arguments: ["%redis_sentinels%", "%redis_sentinel_options_doctrine_metadata%"]
+    predis_client_for_redis_queue:
+        class: Predis\Client
+        arguments: ["%redis_sentinels%", "%redis_sentinel_options_for_redis_queue%"]
+    predis_client_for_var_cache:
+        class: Predis\Client
+        arguments: ["%redis_sentinels%", "%redis_sentinel_options_for_var_cache%"]
+        

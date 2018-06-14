@@ -1,16 +1,20 @@
 doctrine:
     orm:
+        metadata_cache_driver:
+            type: service
+            id: doctrine.metadata_cache_provider
         query_cache_driver:
             type: service
             id: doctrine.query_cache_provider
         result_cache_driver:
             type: service
             id: doctrine.result_cache_provider
-        metadata_cache_driver:
-            type: service
-            id: doctrine.metadata_cache_provider
 
 services:
+    doctrine.metadata_cache_provider:
+        class: Doctrine\Common\Cache\PredisCache
+        arguments:
+            - '@predis_client_doctrine_metadata'
     doctrine.query_cache_provider:
         class: Doctrine\Common\Cache\PredisCache
         arguments:
@@ -19,8 +23,3 @@ services:
         class: Doctrine\Common\Cache\PredisCache
         arguments:
             - '@predis_client_doctrine_result'
-    doctrine.metadata_cache_provider:
-        class: Doctrine\Common\Cache\PredisCache
-        arguments:
-            - '@predis_client_doctrine_metadata'
-            
