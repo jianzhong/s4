@@ -1,42 +1,42 @@
 parameters:
     redis_sentinels:
-        - "%REDIS_SENTINEL_1%"
-        - "%REDIS_SENTINEL_2%"
-        - "%REDIS_SENTINEL_3%"
+        - '%env(resolve:REDIS_SENTINEL_1)%'
+        - '%env(resolve:REDIS_SENTINEL_2)%'
+        - '%env(resolve:REDIS_SENTINEL_3)%'
         
     redis_sentinel_options_session:
         replication: 'sentinel'
-        service: "%REDIS_GROUP_NAME%"
+        service: '%env(resolve:REDIS_GROUP_NAME)%'
         parameters:
             database: 1
-            password: "%REDIS_SENTINEL_AUTH_PASSWORD%"
+            password: '%env(resolve:REDIS_SENTINEL_AUTH_PASSWORD)%'
     redis_sentinel_options_doctrine_query:
         replication: 'sentinel'
-        service: "%REDIS_GROUP_NAME%"
+        service: '%env(resolve:REDIS_GROUP_NAME)%'
         parameters:
             database: 2
-            password: "%REDIS_SENTINEL_AUTH_PASSWORD%"
+            password: '%env(resolve:REDIS_SENTINEL_AUTH_PASSWORD)%'
     redis_sentinel_options_doctrine_result:
         replication: 'sentinel'
-        service: "%REDIS_GROUP_NAME%"
+        service: '%env(resolve:REDIS_GROUP_NAME)%'
         parameters:
             database: 3
-            password: "%REDIS_SENTINEL_AUTH_PASSWORD%"
+            password: '%env(resolve:REDIS_SENTINEL_AUTH_PASSWORD)%'
     redis_sentinel_options_doctrine_metadata:
         replication: 'sentinel'
-        service: "%REDIS_GROUP_NAME%"
+        service: '%env(resolve:REDIS_GROUP_NAME)%'
         parameters:
             database: 4
-            password: "%REDIS_SENTINEL_AUTH_PASSWORD%"
+            password: '%env(resolve:REDIS_SENTINEL_AUTH_PASSWORD)%'
     redis_sentinel_options_for_redis_queue:
         replication: 'sentinel'
-        service: "%REDIS_GROUP_NAME%"
+        service: '%env(resolve:REDIS_GROUP_NAME)%'
         parameters:
             database: 5
-            password: "%REDIS_SENTINEL_AUTH_PASSWORD%"
+            password: '%env(resolve:REDIS_SENTINEL_AUTH_PASSWORD)%'
     redis_sentinel_options_for_var_cache:
         replication: 'sentinel'
-        service: "%REDIS_GROUP_NAME%"
+        service: '%env(resolve:REDIS_GROUP_NAME)%'
         parameters:
             database: 15
-            password: "%REDIS_SENTINEL_AUTH_PASSWORD%"
+            password: '%env(resolve:REDIS_SENTINEL_AUTH_PASSWORD)%'
