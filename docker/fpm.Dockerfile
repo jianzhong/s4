@@ -2,6 +2,7 @@ FROM php:fpm-alpine3.7
 
 # Install selected extensions and other stuff
 RUN apk add --update \
+        procps \
         autoconf \
         g++ \
         libtool \
