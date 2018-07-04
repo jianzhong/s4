@@ -30,6 +30,7 @@ RUN apk add --update \
     && docker-php-ext-install zip \
     && docker-php-ext-install xsl \
     && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install pcntl \
     && docker-php-ext-enable \
         ssh2 \
         xdebug \
@@ -37,6 +38,7 @@ RUN apk add --update \
         mcrypt \
         raphf \
         propro \
+        pcntl \
     && pecl install pecl_http \
     && docker-php-source delete \
     && apk del \
